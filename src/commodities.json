@@ -28,17 +28,17 @@
     },
     {
         "id": 104,
-        "name": "R0G机械键盘",
-        "type": "电脑配件",
-        "price": 1299.00,
+        "name": "白人牙膏",
+        "type": "日用品",
+        "price": 9.00,
         "quantity": 80,
-        "model": "黑曜石色",
-        "isWithBluetooth": true
+        "model": "家庭版",
+        "isWithBluetooth": false
     },
     {
         "id": 105,
         "name": "嗷风电竞椅",
-        "type": "家具",
+        "type": "日用品",
         "price": 2999.00,
         "quantity": 20,
         "model": "酒红色",
