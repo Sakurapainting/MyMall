@@ -9,7 +9,7 @@ public class NoDiscount implements DiscountStrategy {
         double total = 0.0;
         // 无折扣
         for (Commodity commodity : commodities) {
-            total += commodity.getPrice() * commodity.getQuantity();
+            total += commodity.getPrice();
         }
         return total;
     }

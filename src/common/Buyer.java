@@ -50,7 +50,7 @@ public class Buyer {
         cart.clearCart();
     }
 
-    public void submitOrder() {
+    public void submitOrder(Mall mall) {
         if (!cart.getCommodities().isEmpty()) {
             Scanner sc = new Scanner(System.in);
             System.out.println("请输入送货地址：");
@@ -70,11 +70,11 @@ public class Buyer {
             // 显示折扣信息和总价
             System.out.println("折扣类型：" + currentOrder.getDiscountType());
             System.out.println("折扣后的总价：" + currentOrder.getTotalPrice());
-
+    
             // 将订单发送给物流公司
             LogisticsCompany logisticsCompany = new LogisticsCompany();
             logisticsCompany.processOrder(currentOrder.toJson());
-
+    
             try (FileWriter writer = new FileWriter("orders.json", true)) {
                 writer.write(currentOrder.toJson());
                 writer.write("\n"); // 每个订单占一行
@@ -82,7 +82,12 @@ public class Buyer {
                 e.printStackTrace();
                 System.out.println("保存订单到文件时出错。");
             }
-
+    
+            // 减少对应商品的库存
+            for (Commodity commodity : currentOrder.getCommodities()) {
+                mall.decreaseStock(commodity.getId());
+            }
+    
         } else {
             System.out.println("购物车为空，无法提交订单。");
         }

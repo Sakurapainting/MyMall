@@ -87,4 +87,19 @@ public class Mall {
         }
     }
 
+    public void decreaseStock(int id) {
+        Commodity commodity = getCommodityById(id);
+        if (commodity != null) {
+            int currentQuantity = commodity.getQuantity();
+            if (currentQuantity >= 1) {
+                commodity.setQuantity(currentQuantity - 1);
+                saveCommodities();
+                System.out.println("商品编号 " + id + " 的库存已减少 " + 1 + "。");
+            } else {
+                System.out.println("商品编号 " + id + " 的库存不足。");
+            }
+        } else {
+            System.out.println("未找到商品编号：" + id);
+        }
+    }
 }

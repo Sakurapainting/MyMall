@@ -9,7 +9,7 @@ public class Double11Discount implements DiscountStrategy {
         double total = 0.0;
         // 全部打七折
         for (Commodity commodity : commodities) {
-            total += commodity.getPrice() * 0.7 * commodity.getQuantity();
+            total += commodity.getPrice() * 0.7;
         }
         return total;
     }

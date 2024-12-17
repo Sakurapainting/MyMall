@@ -9,9 +9,9 @@ public class NationalDayDiscount implements DiscountStrategy {
         double total = 0.0;
         for (Commodity commodity : commodities) {
             if (commodity instanceof HomeAppliance || commodity instanceof ElectronicProduct) {
-                total += commodity.getPrice() * 0.8 * commodity.getQuantity();
+                total += commodity.getPrice() * 0.8;
             } else {
-                total += commodity.getPrice() * commodity.getQuantity();
+                total += commodity.getPrice();
             }
         }
         return total;

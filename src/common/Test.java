@@ -77,7 +77,7 @@ public class Test {
                     pause.nextLine();
                     break;
                 case 8:// 结账
-                    buyer.submitOrder();
+                    buyer.submitOrder(mall);
 
                     // 查看订单
                     System.out.println("订单信息：");
