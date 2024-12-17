@@ -1,9 +1,13 @@
+package model;
+
 import java.util.Date;
 import java.util.List;
 
 import com.google.gson.annotations.SerializedName;
+
 import discount.DiscountFactory;
 import discount.DiscountStrategy;
+import common.*;
 
 public class Order {
     private List<Commodity> commodities;

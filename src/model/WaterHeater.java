@@ -1,3 +1,5 @@
+package model;
+
 public class WaterHeater extends ElectricalAppliance {
     public WaterHeater() {
         super();

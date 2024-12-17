@@ -1,2 +1,3 @@
 {"commodities":[{"__type":"电冰箱","id":201,"name":"嗨尔电冰箱","price":2999.99,"quantity":20,"model":"双开门","isWithBluetooth":false}],"orderDate":"Dec 17, 2024, 4:37:26 PM","address":"tj","contactPerson":"12","contactPhone":"123","orderNumber":1000}
 {"commodities":[{"__type":"电子产品","id":103,"name":"花为手机","price":6999.0,"quantity":100,"model":"冷峰蓝","isWithBluetooth":true}],"orderDate":"Dec 17, 2024, 4:38:53 PM","address":"bj","contactPerson":"1234","contactPhone":"123","orderNumber":1000}
+{"commodities":[{"__type":"日用品","id":105,"name":"嗷风电竞椅","price":2999.0,"quantity":20,"model":"酒红色","isWithBluetooth":false}],"orderDate":"Dec 17, 2024, 8:55:05 PM","address":"tj","contactPerson":"asd","contactPhone":"13333333333","orderNumber":1000,"totalPrice":59980.0,"discountType":"无折扣"}

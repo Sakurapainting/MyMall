@@ -1,3 +1,5 @@
+package model;
+
 public class Humidifier extends ElectricalAppliance {
     public Humidifier() {
         super();

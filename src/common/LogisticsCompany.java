@@ -1,3 +1,5 @@
+package common;
+
 import com.google.gson.Gson;
 import model.DeliveryNote;
 import model.Order;

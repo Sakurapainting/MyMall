@@ -1,8 +1,7 @@
+package common;
+
 import java.util.Scanner;
 
-import common.Buyer;
-import common.CommodityFactory;
-import common.Menu;
 import model.*;
 
 public class Test {
@@ -13,7 +12,7 @@ public class Test {
 
         // 初始化商城
         Mall mall = new Mall();
-        mall.loadCommodities("src/commodities.json");
+        mall.loadCommodities("src/common/commodities.json");
 
         // 初始化买家
         Buyer buyer = new Buyer("张三");

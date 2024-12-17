@@ -1,3 +1,5 @@
+package model;
+
 public class Fan extends ElectricalAppliance {
     public Fan() {
         super();

@@ -1,3 +1,5 @@
+package model;
+
 public class ElectricalAppliance extends HomeAppliance {
     public ElectricalAppliance() {
         super();

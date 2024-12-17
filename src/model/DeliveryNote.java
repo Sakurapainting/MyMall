@@ -1,5 +1,6 @@
+package model;
+
 import java.util.List;
-import model.*;
 
 public class DeliveryNote {
     private int orderNumber;

@@ -1,3 +1,5 @@
+package common;
+
 public class OrderNumberGenerator {
     // 单例模式
     private static OrderNumberGenerator instance = new OrderNumberGenerator();

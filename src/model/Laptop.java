@@ -1,3 +1,5 @@
+package model;
+
 public class Laptop extends Computer {
     private boolean isWireless;
 

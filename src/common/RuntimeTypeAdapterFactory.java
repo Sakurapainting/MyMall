@@ -1,4 +1,4 @@
-/*
+package common;/*
  * Copyright (C) 2011 Google Inc.
  *
  * Licensed under the Apache License, Version 2.0 (the "License");
@@ -103,13 +103,13 @@ import java.util.Map;
  *
  * <h2>Registering Types</h2>
  *
- * Create a {@code RuntimeTypeAdapterFactory} by passing the base type and type field name to the
+ * Create a {@code common.RuntimeTypeAdapterFactory} by passing the base type and type field name to the
  * {@link #of} factory method. If you don't supply an explicit type field name, {@code "type"} will
  * be used.
  *
  * <pre>{@code
- * RuntimeTypeAdapterFactory<Shape> shapeAdapterFactory
- *     = RuntimeTypeAdapterFactory.of(Shape.class, "type");
+ * common.RuntimeTypeAdapterFactory<Shape> shapeAdapterFactory
+ *     = common.RuntimeTypeAdapterFactory.of(Shape.class, "type");
  * }</pre>
  *
  * Next register all of your subtypes. Every subtype must be explicitly registered. This protects
@@ -133,7 +133,7 @@ import java.util.Map;
  * Like {@code GsonBuilder}, this API supports chaining:
  *
  * <pre>{@code
- * RuntimeTypeAdapterFactory<Shape> shapeAdapterFactory = RuntimeTypeAdapterFactory.of(Shape.class)
+ * common.RuntimeTypeAdapterFactory<Shape> shapeAdapterFactory = common.RuntimeTypeAdapterFactory.of(Shape.class)
  *     .registerSubtype(Rectangle.class)
  *     .registerSubtype(Circle.class)
  *     .registerSubtype(Diamond.class);
