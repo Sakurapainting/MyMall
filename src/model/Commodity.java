@@ -25,6 +25,8 @@ public abstract class Commodity {
     @SerializedName("isWithBluetooth")
     private boolean isWithBluetooth;
 
+    private long addedTime;
+
     public Commodity(int id, String name, double price, int quantity, String model, boolean isWithBluetooth) {
         this.id = id;
         this.name = name;
@@ -32,6 +34,7 @@ public abstract class Commodity {
         this.quantity = quantity;
         this.model = model;
         this.isWithBluetooth = isWithBluetooth;
+        this.addedTime = System.currentTimeMillis();
     }
 
     // Getter和Setter方法
@@ -52,6 +55,13 @@ public abstract class Commodity {
 
     public boolean getIsWithBluetooth() { return isWithBluetooth; }
     public void setIsWithBluetooth(boolean isWithBluetooth) { this.isWithBluetooth = isWithBluetooth; }
+
+    public long getAddedTime() {
+        return addedTime;
+    }
+    public void setAddedTime(long addedTime) {
+        this.addedTime = addedTime;
+    }
 
     public boolean hasBluetooth() {
         return isWithBluetooth;

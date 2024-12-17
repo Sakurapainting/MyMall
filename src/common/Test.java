@@ -99,7 +99,24 @@ public class Test {
                     System.out.println("按回车键继续...");
                     pause.nextLine();
                     break;
-                case 11:// 退出
+                    case 11: // 排序购物车中的商品
+                    System.out.println("请选择排序算法：");
+                    System.out.println("1、冒泡排序");
+                    System.out.println("2、快速排序");
+                    int algorithmType = sc.nextInt();
+                
+                    System.out.println("请选择排序方式：");
+                    System.out.println("1、按照商品名称排序");
+                    System.out.println("2、按照商品编号排序");
+                    System.out.println("3、按照商品加入购物车的时间倒序排序");
+                    int sortType = sc.nextInt();
+                
+                    buyer.sortCart(algorithmType, sortType);
+                    buyer.viewCart(); // 显示排序后的购物车
+                    System.out.println("按回车键继续...");
+                    pause.nextLine();
+                    break;
+                case 12:// 退出
                     Menu.endMenu();
                     System.exit(0);
                 default:

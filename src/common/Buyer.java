@@ -128,4 +128,9 @@ public class Buyer {
             }
         }
     }
+
+    public void sortCart(int algorithmType, int sortType) {
+        cart.sortCommodities(algorithmType, sortType);
+        System.out.println("购物车已按照选择的算法和方式排序。");
+    }
 }
