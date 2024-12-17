@@ -1,3 +1,5 @@
+import model.*;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
@@ -63,6 +65,10 @@ public class Buyer {
             cart = new ShoppingCart(); // 清空购物车
             System.out.println("订单提交成功！");
             
+            // 显示折扣信息和总价
+            System.out.println("折扣类型：" + currentOrder.getDiscountType());
+            System.out.println("折扣后的总价：" + currentOrder.getTotalPrice());
+
             // 将订单发送给物流公司
             LogisticsCompany logisticsCompany = new LogisticsCompany();
             logisticsCompany.processOrder(currentOrder.toJson());
@@ -74,7 +80,7 @@ public class Buyer {
                 e.printStackTrace();
                 System.out.println("保存订单到文件时出错。");
             }
-            
+
         } else {
             System.out.println("购物车为空，无法提交订单。");
         }

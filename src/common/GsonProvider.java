@@ -1,5 +1,6 @@
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
+import model.*;
 
 public class GsonProvider {
     private static final Gson gson = createGson();

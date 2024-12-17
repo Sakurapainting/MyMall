@@ -1,12 +1,13 @@
 import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
+import model.DeliveryNote;
+import model.Order;
 
 public class LogisticsCompany {
     public void processOrder(String orderJsonData) {
         try {
             Gson gson = GsonProvider.getGson();
 
-            // 反序列化 Order 对象
+            // 反序列化 model.Order 对象
             Order order = gson.fromJson(orderJsonData, Order.class);
 
             // 生成物流单

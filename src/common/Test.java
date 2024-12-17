@@ -1,6 +1,9 @@
 import java.util.Scanner;
-import java.util.ArrayList;
-import java.util.List;
+
+import common.Buyer;
+import common.CommodityFactory;
+import common.Menu;
+import model.*;
 
 public class Test {
     public static void main(String[] args) {

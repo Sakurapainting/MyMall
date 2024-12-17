@@ -1,3 +1,5 @@
+import model.*;
+
 public class CommodityFactory {
     public static Commodity createCommodity(String type, int id, String name, double price, int quantity, String model, boolean isWithBluetooth) {
         switch (type) {

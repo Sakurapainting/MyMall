@@ -1,7 +1,4 @@
-import com.google.gson.Gson;
-import com.google.gson.GsonBuilder;
-import java.util.ArrayList;
-import java.util.List;
+import model.*;
 
 public class ElectricalApplianceFactory {
     public static ElectricalAppliance createAppliance(String type, int id, String name, double price, int quantity, String model, boolean isWithBluetooth) {
