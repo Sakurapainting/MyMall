@@ -5,10 +5,13 @@ import java.lang.reflect.Type;
 import com.google.gson.Gson;
 import com.google.gson.GsonBuilder;
 import com.google.gson.reflect.TypeToken;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Mall {
     private List<Commodity> commodities;
     private Gson gson;
+    private String commoditiesFilePath = "src/commodities.json";
 
     public Mall() {
         commodities = new ArrayList<>();
@@ -50,8 +53,20 @@ public class Mall {
         return bluetoothCommodities;
     }
 
+    // 保存商品到 JSON 文件
+    public void saveCommodities() {
+        try (FileWriter writer = new FileWriter(commoditiesFilePath)) {
+            gson.toJson(commodities, writer);
+            System.out.println("商品已成功保存。");
+        } catch (IOException e) {
+            e.printStackTrace();
+            System.out.println("保存商品信息时出错。");
+        }
+    }
+
     public void addCommodity(Commodity commodity) {
         commodities.add(commodity);
+        saveCommodities();
     }
 
     // 从 JSON 数据中加载商品

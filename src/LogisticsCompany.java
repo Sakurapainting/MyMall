@@ -21,8 +21,9 @@ public class LogisticsCompany {
     }
 
     private DeliveryNote createDeliveryNote(Order order) {
-        String contactPerson = "联系人"; 
-        String contactPhone = "联系电话"; 
-        return new DeliveryNote(order, contactPerson, contactPhone, order.getAddress());
+        String contactPerson = order.getContactPerson(); 
+        String contactPhone = order.getContactPhone(); 
+        String address = order.getAddress();
+        return new DeliveryNote(order, contactPerson, contactPhone, address);
     }
 }

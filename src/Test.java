@@ -1,4 +1,6 @@
 import java.util.Scanner;
+import java.util.ArrayList;
+import java.util.List;
 
 public class Test {
     public static void main(String[] args) {
@@ -12,12 +14,6 @@ public class Test {
 
         // 初始化买家
         Buyer buyer = new Buyer("张三");
-
-        // 使用电器厂创建电器商品
-        ElectricalAppliance fridge = ElectricalApplianceFactory.createAppliance("电冰箱", 201, "嗨尔电冰箱", 2999.99, 20, "双开门", false);
-        String fridgeJson = ElectricalApplianceFactory.applianceToJson(fridge);
-        // 从JSON将电器商品添加到商城
-        mall.addCommodityFromJson(fridgeJson);
 
         while(true){
             Menu.showMenu();
@@ -139,10 +135,7 @@ public class Test {
 
         Commodity newCommodity = CommodityFactory.createCommodity(type, id, name, price, quantity, model, isWithBluetooth);
         if (newCommodity != null) {
-            // 使用统一的 Gson 实例进行序列化
-            String newCommodityJson = GsonProvider.getGson().toJson(newCommodity);
-            // 将 JSON 添加到商城
-            mall.addCommodityFromJson(newCommodityJson);
+            mall.addCommodity(newCommodity); // 添加并保存
             System.out.println("新商品已添加到商城！");
         } else {
             System.out.println("商品添加失败。");

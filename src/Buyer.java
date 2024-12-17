@@ -1,6 +1,8 @@
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Scanner;
+import java.io.FileWriter;
+import java.io.IOException;
 
 public class Buyer {
     private String name;
@@ -49,7 +51,14 @@ public class Buyer {
             Scanner sc = new Scanner(System.in);
             System.out.println("请输入送货地址：");
             address = sc.nextLine(); // 输入地址
-            currentOrder = new Order(cart.getCommodities(), address);
+    
+            System.out.println("请输入联系人：");
+            String contactPerson = sc.nextLine(); // 输入联系人
+    
+            System.out.println("请输入联系电话：");
+            String contactPhone = sc.nextLine(); // 输入联系电话
+    
+            currentOrder = new Order(cart.getCommodities(), address, contactPerson, contactPhone);
             orderHistory.add(currentOrder); // 添加到历史订单
             cart = new ShoppingCart(); // 清空购物车
             System.out.println("订单提交成功！");
@@ -57,6 +66,15 @@ public class Buyer {
             // 将订单发送给物流公司
             LogisticsCompany logisticsCompany = new LogisticsCompany();
             logisticsCompany.processOrder(currentOrder.toJson());
+
+            try (FileWriter writer = new FileWriter("orders.json", true)) {
+                writer.write(currentOrder.toJson());
+                writer.write("\n"); // 每个订单占一行
+            } catch (IOException e) {
+                e.printStackTrace();
+                System.out.println("保存订单到文件时出错。");
+            }
+            
         } else {
             System.out.println("购物车为空，无法提交订单。");
         }
