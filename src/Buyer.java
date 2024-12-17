@@ -53,6 +53,10 @@ public class Buyer {
             orderHistory.add(currentOrder); // 添加到历史订单
             cart = new ShoppingCart(); // 清空购物车
             System.out.println("订单提交成功！");
+            
+            // 将订单发送给物流公司
+            LogisticsCompany logisticsCompany = new LogisticsCompany();
+            logisticsCompany.processOrder(currentOrder.toJson());
         } else {
             System.out.println("购物车为空，无法提交订单。");
         }

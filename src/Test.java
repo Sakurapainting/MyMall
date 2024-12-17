@@ -13,6 +13,12 @@ public class Test {
         // 初始化买家
         Buyer buyer = new Buyer("张三");
 
+        // 使用电器厂创建电器商品
+        ElectricalAppliance fridge = ElectricalApplianceFactory.createAppliance("电冰箱", 201, "嗨尔电冰箱", 2999.99, 20, "双开门", false);
+        String fridgeJson = ElectricalApplianceFactory.applianceToJson(fridge);
+        // 从JSON将电器商品添加到商城
+        mall.addCommodityFromJson(fridgeJson);
+
         while(true){
             Menu.showMenu();
             System.out.println("请输入序号:");
@@ -85,18 +91,63 @@ public class Test {
                     break;
                 case 9:// 查看历史订单
                     buyer.viewOrderHistory();
+
                     System.out.println("按回车键继续...");
                     pause.nextLine();
                     break;
-                case 10:// 退出
+                case 10:// 添加新商品
+                    addCommodityToMall(mall);
+
+                    System.out.println("按回车键继续...");
+                    pause.nextLine();
+                    break;
+                case 11:// 退出
                     Menu.endMenu();
                     System.exit(0);
                 default:
                     System.out.println("无效的选项，请重新输入。");
                     break;
-                }
             }
         }
+    }
+
+    // 添加新商品到商城
+    public static void addCommodityToMall(Mall mall) {
+        Scanner sc = new Scanner(System.in);
+        System.out.println("请输入商品类型（电子产品、日用品、食品、文具、家电、电脑、手机、笔记本电脑、台式机、一体机、平板电脑、耳机、移动硬盘、蓝牙设备、蓝牙耳机、蓝牙笔记本、蓝牙手表）:");
+        String type = sc.nextLine();
+
+        System.out.println("请输入商品编号:");
+        int id = sc.nextInt();
+        sc.nextLine(); // 清除缓冲区（nextInt()读取整数后，回车留在缓冲区）
+
+        System.out.println("请输入商品名称:");
+        String name = sc.nextLine();
+
+        System.out.println("请输入商品价格:");
+        double price = sc.nextDouble();
+
+        System.out.println("请输入商品数量:");
+        int quantity = sc.nextInt();
+        sc.nextLine(); // 清除缓冲区（nextInt()读取整数后，回车留在缓冲区）
+
+        System.out.println("请输入商品型号/分类:");
+        String model = sc.nextLine();
+
+        System.out.println("该商品是否具有蓝牙功能？（true/false）:");
+        boolean isWithBluetooth = sc.nextBoolean();
+
+        Commodity newCommodity = CommodityFactory.createCommodity(type, id, name, price, quantity, model, isWithBluetooth);
+        if (newCommodity != null) {
+            // 使用统一的 Gson 实例进行序列化
+            String newCommodityJson = GsonProvider.getGson().toJson(newCommodity);
+            // 将 JSON 添加到商城
+            mall.addCommodityFromJson(newCommodityJson);
+            System.out.println("新商品已添加到商城！");
+        } else {
+            System.out.println("商品添加失败。");
+        }
+    }
 
         // // 浏览商品
         // buyer.browseMall(mall);
