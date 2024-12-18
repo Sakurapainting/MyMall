@@ -6,7 +6,7 @@ public class OrderNumberGenerator {
     private int currentOrderNumber = 1000;
 
     private OrderNumberGenerator() {
-        // 私有构造函数，防止外部实例化
+
     }
 
     public static OrderNumberGenerator getInstance() {

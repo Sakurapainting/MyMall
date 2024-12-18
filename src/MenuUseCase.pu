@@ -1,0 +1,27 @@
+@startuml
+actor "买家" as Buyer
+
+usecase "展示商品" as UC1
+usecase "按编号查询商品" as UC2
+usecase "查询有蓝牙功能的商品" as UC3
+usecase "添加商品至购物车" as UC4
+usecase "删除购物车中的商品" as UC5
+usecase "查看购物车" as UC6
+usecase "清空购物车" as UC7
+usecase "结账" as UC8
+usecase "添加新商品" as UC9
+usecase "排序购物车中的商品" as UC10
+usecase "退出" as UC11
+
+Buyer --> UC1
+Buyer --> UC2
+Buyer --> UC3
+Buyer --> UC4
+Buyer --> UC5
+Buyer --> UC6
+Buyer --> UC7
+Buyer --> UC8
+Buyer --> UC9
+Buyer --> UC10
+Buyer --> UC11
+@enduml

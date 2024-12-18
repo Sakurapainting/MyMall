@@ -87,19 +87,14 @@ public class Test {
                     System.out.println("按回车键继续...");
                     pause.nextLine();
                     break;
-                case 9:// 查看历史订单
-                    buyer.viewOrderHistory();
-
-                    System.out.println("按回车键继续...");
-                    pause.nextLine();
-                    break;
-                case 10:// 添加新商品
+                
+                case 9:// 添加新商品
                     addCommodityToMall(mall);
 
                     System.out.println("按回车键继续...");
                     pause.nextLine();
                     break;
-                    case 11: // 排序购物车中的商品
+                case 10: // 排序购物车中的商品
                     System.out.println("请选择排序算法：");
                     System.out.println("1、冒泡排序");
                     System.out.println("2、快速排序");
@@ -116,7 +111,7 @@ public class Test {
                     System.out.println("按回车键继续...");
                     pause.nextLine();
                     break;
-                case 12:// 退出
+                case 11:// 退出
                     Menu.endMenu();
                     System.exit(0);
                 default:

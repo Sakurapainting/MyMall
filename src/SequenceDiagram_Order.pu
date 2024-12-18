@@ -1,0 +1,17 @@
+@startuml
+actor Buyer
+participant "Menu" as Menu
+participant "Mall" as Mall
+participant "ShoppingCart" as Cart
+participant "Order" as Order
+participant "LogisticsCompany" as Logistics
+
+Buyer -> Menu: 选择提交订单
+Menu -> Mall: 获取商品信息
+Mall -> Mall: 创建Order
+Mall -> Buyer: 返回订单信息
+Buyer -> Order: 提交订单
+Order -> Logistics: 发送订单
+Logistics -> Order: 处理订单
+Order -> Buyer: 确认订单完成
+@enduml

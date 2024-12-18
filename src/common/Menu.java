@@ -14,10 +14,9 @@ public class Menu {
 		System.out.println("6）查看购物车");
 		System.out.println("7）清空购物车");
 		System.out.println("8）结账");
-        System.out.println("9）查看历史订单");
-        System.out.println("10）添加新商品");
-		System.out.println("11）排序购物车中的商品");
-        System.out.println("12）退出");
+        System.out.println("9）添加新商品");
+		System.out.println("10）排序购物车中的商品");
+        System.out.println("11）退出");
 	}
 
 	public static void endMenu() {

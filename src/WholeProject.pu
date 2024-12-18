@@ -1,0 +1,229 @@
+@startuml
+
+package model {
+    abstract class Commodity {
+        -id: int
+        -name: String
+        -price: double
+        -quantity: int
+        -model: String
+        -isWithBluetooth: boolean
+        -addedTime: long
+        +getId(): int
+        +getName(): String
+        +getPrice(): double
+        +getQuantity(): int
+        +getModel(): String
+        +getIsWithBluetooth(): boolean
+        +hasBluetooth(): boolean
+        +toString(): String
+    }
+
+    class ElectronicProduct
+    class DailyNecessity
+    class Food
+    class Stationery
+    class HomeAppliance
+    class Computer
+    class Laptop
+    class Desktop
+    class AllInOne
+    class Tablet
+    class MobilePhone
+    class Headphone
+    class HardDrive
+    class BluetoothDevice
+    class BluetoothHeadphone
+    class BluetoothLaptop
+    class BluetoothWatch
+    class Refrigerator
+    class AirConditioner
+    class Fan
+    class WaterHeater
+    class Humidifier
+
+    Commodity <|-- ElectronicProduct
+    Commodity <|-- DailyNecessity
+    Commodity <|-- Food
+    Commodity <|-- Stationery
+    Commodity <|-- HomeAppliance
+    Commodity <|-- Computer
+    Computer <|-- Laptop
+    Computer <|-- Desktop
+    Computer <|-- AllInOne
+    Computer <|-- Tablet
+    Computer <|-- MobilePhone
+    Computer <|-- Headphone
+    Computer <|-- HardDrive
+    Commodity <|-- BluetoothDevice
+    BluetoothDevice <|-- BluetoothHeadphone
+    BluetoothDevice <|-- BluetoothLaptop
+    BluetoothDevice <|-- BluetoothWatch
+    HomeAppliance <|-- Refrigerator
+    HomeAppliance <|-- AirConditioner
+    HomeAppliance <|-- Fan
+    HomeAppliance <|-- WaterHeater
+    HomeAppliance <|-- Humidifier
+}
+
+package common {
+    class Mall {
+        -commodities: List<Commodity>
+        -gson: Gson
+        -commoditiesFilePath: String
+        +Mall()
+        +loadCommodities(filePath: String)
+        +showAllCommodities()
+        +getCommodityById(id: int): Commodity
+        +findBlueTooth(): List<Commodity>
+        +saveCommodities()
+        +addCommodity(commodity: Commodity)
+        +addCommodityFromJson(jsonData: String)
+        +decreaseStock(id: int)
+    }
+
+    class Buyer {
+        -name: String
+        -address: String
+        -cart: ShoppingCart
+        -currentOrder: Order
+        -orderHistory: List<Order>
+        +Buyer(name: String)
+        +browseMall(mall: Mall)
+        +viewCommodity(mall: Mall, id: int)
+        +addToCart(commodity: Commodity)
+        +removeFromCart(id: int)
+        +clearCart()
+        +submitOrder(mall: Mall)
+        +viewOrder()
+        +viewCart()
+        +viewOrderHistory()
+        +findBlueTooth(mall: Mall)
+        +sortCart(algorithmType: int, sortType: int)
+    }
+
+    class ShoppingCart {
+        -commodities: List<Commodity>
+        +ShoppingCart()
+        +addCommodity(commodity: Commodity)
+        +sortCommodities(algorithmType: int, sortType: int)
+        +removeCommodity(id: int)
+        +clearCart()
+        +showCart()
+        +getCommodities(): List<Commodity>
+    }
+
+    class Order {
+        -commodities: List<Commodity>
+        -orderDate: Date
+        -address: String
+        -contactPerson: String
+        -contactPhone: String
+        -orderNumber: int
+        -totalPrice: double
+        -discountType: String
+        +Order(commodities: List<Commodity>, address: String, contactPerson: String, contactPhone: String)
+        +showOrder()
+        +toJson(): String
+        +getOrderNumber(): int
+        +getAddress(): String
+        +getCommodities(): List<Commodity>
+        +getTotalPrice(): double
+        +getDiscountType(): String
+    }
+
+    class DeliveryNote {
+        -orderNumber: int
+        -contactPerson: String
+        -contactPhone: String
+        -address: String
+        -commodities: List<Commodity>
+        -totalPrice: double
+        -discountType: String
+        +DeliveryNote(order: Order, contactPerson: String, contactPhone: String, address: String)
+        +toString(): String
+    }
+
+    class CommodityFactory {
+        +createCommodity(type: String, id: int, name: String, price: double, quantity: int, model: String, isWithBluetooth: boolean): Commodity
+    }
+
+    class ElectricalApplianceFactory {
+        +createAppliance(type: String, id: int, name: String, price: double, quantity: int, model: String, isWithBluetooth: boolean): ElectricalAppliance
+    }
+
+    class OrderNumberGenerator {
+        -instance: OrderNumberGenerator
+        -currentOrderNumber: int
+        +getInstance(): OrderNumberGenerator
+        +getNextOrderNumber(): int
+    }
+
+    class LogisticsCompany {
+        +processOrder(orderJsonData: String)
+        -createDeliveryNote(order: Order): DeliveryNote
+    }
+
+    class Menu {
+        +showMenu()
+        +endMenu()
+    }
+
+    class ShoppingCart {
+        // 同上
+    }
+
+    Mall --> "*" Commodity
+    Buyer --> ShoppingCart
+    Buyer --> "*" Order
+    ShoppingCart --> "*" Commodity
+    Order --> "*" Commodity
+    Order --> DeliveryNote
+    CommodityFactory --> Commodity
+    ElectricalApplianceFactory --> ElectricalAppliance
+    OrderNumberGenerator --> Order
+    LogisticsCompany --> Order
+}
+
+package discount {
+    interface DiscountStrategy {
+        +applyDiscount(commodities: List<Commodity>): double
+        +getHolidayName(): String
+    }
+
+    class NationalDayDiscount
+    class Double11Discount
+    class NoDiscount
+    class ProgrammerDayDiscount
+    class DiscountFactory
+
+    DiscountStrategy <|.. NationalDayDiscount
+    DiscountStrategy <|.. Double11Discount
+    DiscountStrategy <|.. NoDiscount
+    DiscountStrategy <|.. ProgrammerDayDiscount
+    DiscountFactory --> DiscountStrategy
+}
+
+package usb {
+    interface USB {
+        +open()
+        +read()
+        +close()
+    }
+
+    class UsbManager {
+        +useUsbDevice(className: String)
+    }
+
+    class USBDevice1
+    UsbManager --> USB
+    USBDevice1 ..|> USB
+}
+
+common.Mall "1" --> "*" model.Commodity
+common.Buyer "1" --> "1" common.ShoppingCart
+common.Buyer "1" --> "*" common.Order
+common.Order "1" --> "*" model.Commodity
+common.LogisticsCompany "1" --> "*" common.Order
+
+@enduml

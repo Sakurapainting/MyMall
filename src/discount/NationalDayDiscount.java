@@ -8,6 +8,7 @@ public class NationalDayDiscount implements DiscountStrategy {
     public double applyDiscount(List<Commodity> commodities) {
         double total = 0.0;
         for (Commodity commodity : commodities) {
+            // 家电和电子产品 8 折
             if (commodity instanceof HomeAppliance || commodity instanceof ElectronicProduct) {
                 total += commodity.getPrice() * 0.8;
             } else {

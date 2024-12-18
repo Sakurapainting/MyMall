@@ -1,0 +1,11 @@
+@startuml
+actor 用户
+
+rectangle "USB管理系统" {
+    用户 --> (使用USB设备)
+    (使用USB设备) --> (打开设备)
+    (使用USB设备) --> (读取数据)
+    (使用USB设备) --> (关闭设备)
+}
+
+@enduml
